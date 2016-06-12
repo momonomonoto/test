@@ -1,0 +1,22 @@
+'use strict'
+function inspection(bracket) {
+    var bracketRight = [];
+    var bracketLeft = [];
+    var arr = bracket.split('');
+    for (var i = 0; i < arr.length; i++) {
+        if (arr[0] == ")" || arr[arr.length - 1] == "(") {
+            alert("error");
+            break;
+        } else if (arr[i] == "(") {
+            bracketLeft.push(arr[i]);
+        } else if (arr[i] == ")") {
+            bracketRight.push(arr[i]);
+        }
+    }
+    if (bracketRight.length != bracketLeft.length) {
+        alert("Wrong value!");
+    } else {
+        alert("Right value!");
+    }
+};
+inspection("()()()()()(((()(())()))))");
