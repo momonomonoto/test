@@ -6,17 +6,35 @@ function inspection(bracket) {
     for (var i = 0; i < arr.length; i++) {
         if (arr[0] == ")" || arr[arr.length - 1] == "(") {
             alert("error");
-            break;
+            return;
         } else if (arr[i] == "(") {
             bracketLeft.push(arr[i]);
+			
         } else if (arr[i] == ")") {
-            bracketRight.push(arr[i]);
+            bracketLeft.pop();
+			bracketRight.push(arr[i]);
         }
     }
-    if (bracketRight.length != bracketLeft.length) {
-        alert("Wrong value!");
-    } else {
-        alert("Right value!");
-    }
+	if (bracketLeft.length!=0) {
+	alert("number of extra left parentheses"+" "+bracketLeft.length);
+	}
+	else {
+		alert("number of  left parentheses is normal");
+		for (var e=0;e<arr.length;e++)	{
+			if (arr[e]=="(")
+			{
+				bracketRight.pop();
+			}
+			
+		}
+		if (bracketRight.length==0) {
+				alert ("expression is normal");
+		}
+		else {
+		alert ("number of extra right parentheses is "+" "+bracketRight.length);
+		}
+	}
 };
-inspection("()()()()()(((()(())()))))");
+inspection("()()()()()((()()()()((())))))))))))))))))))()");
+
+
